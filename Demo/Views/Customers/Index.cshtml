@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Demo.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Danh Sách Tài Khoản Khách Hàng</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfirmPassCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirthCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityCus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PassCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConfirmPassCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirthCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityCus)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.IDCus }) |
+            @Html.ActionLink("Chi Tiết", "Details", new { id = item.IDCus }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.IDCus })
+</tr>
+}
+
+</table>

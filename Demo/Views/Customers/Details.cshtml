@@ -1,0 +1,91 @@
+﻿@model Demo.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmPassCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmPassCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirthCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirthCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressCus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityCus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityCus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
