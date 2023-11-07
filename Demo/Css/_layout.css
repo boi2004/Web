@@ -331,3 +331,9 @@ img {
 .ty-footer-general__header {
     font-size: 1rem;
 }
+.carousel-indicators button {
+    width: 10px !important;
+    height: 10px !important;
+    border: none !important;
+    border-radius: 10px !important;
+}

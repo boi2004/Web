@@ -112,7 +112,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>
                         @{
-                            var user = HttpContext.Current.Session["user"].ToString();
+                            var user = HttpContext.Current.Session["taikhoan"].ToString();
                             <span>@user</span>
                         }
                         <b class="caret"></b>
@@ -151,7 +151,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="index.html" class="active"><i class="fa fa-dashboard fa-fw"></i> Trang Chủ Admin</a>
+                        <a href="~/HomeAdmin/Index" class="active"><i class="fa fa-dashboard fa-fw"></i> Trang Chủ Admin</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Loại Sản Phẩm (Category)<span class="fa arrow"></span></a>

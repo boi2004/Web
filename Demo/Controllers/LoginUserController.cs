@@ -99,7 +99,7 @@ namespace Demo.Controllers
                 if (khachhang != null)
                 {
                     ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
-                    Session["taikhoan"] = khachhang;
+                    Session["taikhoan"] = khachhang.NameCus;
                     return RedirectToAction("Index", "Home");
                 }
                 else
