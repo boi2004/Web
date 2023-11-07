@@ -1,6 +1,6 @@
-﻿    using System.Linq;
-    using System.Text.RegularExpressions;
-    using System.Web.Mvc;
+﻿using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web.Mvc;
 using System.Web.Security;
 using Demo.Models;
 
@@ -87,6 +87,7 @@ namespace Demo.Controllers
 
             if (ModelState.IsValid)
             {
+
                 if (cust.EmailCus == "admin" && cust.PassCus == "123456")
                 {
                     // Nếu là admin, chuyển hướng đến trang khác (ví dụ: AdminDashboard)
@@ -94,11 +95,12 @@ namespace Demo.Controllers
                 }
 
                 var khachhang = database.Customers.FirstOrDefault(k => k.EmailCus == cust.EmailCus && k.PassCus == cust.PassCus);
+                System.Diagnostics.Debug.WriteLine(khachhang);
                 if (khachhang != null)
                 {
                     ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
                     Session["taikhoan"] = khachhang;
-                    return RedirectToAction("RegisterCustomer");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -117,9 +119,9 @@ namespace Demo.Controllers
             Session.Abandon();
 
             // Chuyển hướng về trang đăng nhập sau khi đăng xuất
-            return RedirectToAction("LoginCustomer","LoginUser");
+            return RedirectToAction("LoginCustomer", "LoginUser");
         }
 
-       
+
     }
 }

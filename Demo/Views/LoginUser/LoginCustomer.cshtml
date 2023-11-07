@@ -1,35 +1,33 @@
 ﻿@model Demo.Models.Customer
-
 @{
     ViewBag.Title = "LoginCustomer";
     Layout = null;
 }
 <body>
     <div id="wrapper">
-        <form action="">
 
+        @using (Html.BeginForm("LoginCustomer", "LoginUser", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
             <h3>Đăng Nhập</h3>
-            @using (Html.BeginForm("LoginCustomer", "LoginUser", FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
 
-                <div class="from-group">
-                    @Html.TextBoxFor(model => model.EmailCus, new { placeholder = "Nhập địa chỉ email" })
-                    @Html.ValidationMessageFor(model => model.EmailCus)
-                    <!-- Hiển thị lỗi nếu email không hợp lệ -->
-                </div>
+            <div class="from-group">
+                @Html.TextBoxFor(model => model.EmailCus, new { placeholder = "Nhập địa chỉ email" })
+                @Html.ValidationMessageFor(model => model.EmailCus)
+                <!-- Hiển thị lỗi nếu email không hợp lệ -->
+            </div>
 
-                <div class="from-group">
-                    @Html.PasswordFor(model => model.PassCus, new { placeholder = "Nhập mật khẩu" })
-                    @Html.ValidationMessageFor(model => model.PassCus)
-                    <!-- Hiển thị lỗi nếu mật khẩu không hợp lệ -->
-                </div>  
-                <input type="submit" value="Login" id="btn-login">
-                <br>
-                <a href="@Url.Action("RegisterCustomer", "LoginUser")" id="btn-regiEster">Đăng Ký</a>   
-                <!-- Liên kết đến trang Đăng ký -->
-            }   
-        </form>
+            <div class="from-group">
+                @Html.PasswordFor(model => model.PassCus, new { placeholder = "Nhập mật khẩu" })
+                @Html.ValidationMessageFor(model => model.PassCus)
+                <!-- Hiển thị lỗi nếu mật khẩu không hợp lệ -->
+            </div>
+            <p class="error">@ViewBag.ThongBao</p>
+            <input type="submit" value="Login" id="btn-login">
+            <br>
+            <a href="@Url.Action("RegisterCustomer", "LoginUser")" id="btn-regiEster">Đăng Ký</a>
+            <!-- Liên kết đến trang Đăng ký -->
+        }
     </div>
 </body>
 <style>
@@ -42,7 +40,7 @@
 
     * {
         box-sizing: border-box;
-    }       
+    }
 
     body {
         font-family: Arial, Helvetica, sans-serif;
@@ -114,5 +112,9 @@
         color: black;
         cursor: pointer;
         box-shadow: inset;
+    }
+
+    .error {
+        color: red
     }
 </style>
