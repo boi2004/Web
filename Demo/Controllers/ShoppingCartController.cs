@@ -86,7 +86,7 @@ namespace NIKE.Controllers
                 Cart cart = Session["Cart"] as Cart;
                 OrderPro _order = new OrderPro();
                 _order.DateOrder = DateTime.Now;
-                _order.AddressDelivery = form["AddressDelivery"];
+                _order.AddressDeliverry = form["AddressDelivery"];
                 _order.IDCus = int.Parse(form["CodeCustomer"]);
                 database.OrderProes.Add(_order);
                 foreach (var item in cart.Items)
