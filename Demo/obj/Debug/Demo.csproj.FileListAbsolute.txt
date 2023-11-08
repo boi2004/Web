@@ -81,3 +81,15 @@ C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\Microsoft.CodeDom.Pr
 C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\obj\Debug\Demo.csproj.CopyComplete
 C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\obj\Debug\Demo.dll
 C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\obj\Debug\Demo.pdb
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\selenium-manager\linux\selenium-manager
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\selenium-manager\macos\selenium-manager
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\selenium-manager\windows\selenium-manager.exe
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\PagedList.dll
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\PagedList.Mvc.dll
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\SeleniumExtras.PageObjects.dll
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\System.Drawing.Common.dll
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\WebDriver.dll
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\PagedList.xml
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\PagedList.Mvc.xml
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\System.Drawing.Common.xml
+C:\Users\NGUYEN\OneDrive\Máy tính\FullStack\Demo\Demo\bin\WebDriver.xml

@@ -6,6 +6,34 @@
 }
 
 <h2>Gocnhinnguoidung</h2>
+@using (Html.BeginForm("Gocnhinnguoidung", "Ring", FormMethod.Get))
+{
+    <div class="filter-buttons">
+        <label for="category">Loại:</label>
+        <select name="category" id="category">
+            <option value="">Tất cả</option>
+            <option value="1">Nhẫn</option>
+            <option value="2">Trang sức</option>
+        </select>
+
+        <label for="gender">Giới tính:</label>
+        <select name="gender" id="gender">
+            <option value="all">Tất cả</option>
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+        </select>
+
+        <label for="priceRange">Giá:</label>
+        <select name="priceRange" id="priceRange">
+            <option value="">Tất cả</option>
+            <option value="0-100000000">Giá dưới 100 Triệu</option>
+            <option value="100000000-800000000">Giá 100 Triệu - 200 Triệu</option>
+            <option value="200000000-100000000000000000000000000000000">Giá trên 200 triệu</option>
+        </select>
+
+        <input type="submit" value="Lọc">
+    </div>
+}
 
 <table class="table">
     <tr>
@@ -42,42 +70,68 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Brand)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Material)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.JewelryType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Collection)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoldCarat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GemType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaterialColor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImagePro)
-        </td>
-        <td>
-            <a href="/ShoppingCart/AddToCart/@item.RingID" class="btn btn-default">Buy</a>
-            @Html.ActionLink("Detail", "Details", new { id=item.RingID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JewelryType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Collection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoldCarat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GemType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePro)
+            </td>
+            <td>
+                <a href="/ShoppingCart/AddToCart/@item.RingID" class="btn btn-default">Buy</a>
+                @Html.ActionLink("Detail", "Details", new { id = item.RingID })
+            </td>
+        </tr>
+    }
 </table>
+
+<script>
+    // Bắt sự kiện khi nút "Lọc" được nhấn
+    document.getElementById("filter-button").addEventListener("click", function () {
+        var selectedCategory = document.getElementById("category").value;
+        var selectedGender = document.getElementById("gender").value;
+        var selectedPriceRange = document.getElementById("priceRange").value;
+
+        var filterUrl = "/Ring/Gocnhinnguoidung"; // Đổi đường dẫn dựa vào controller và action của bạn
+        if (selectedCategory !== "") {
+            filterUrl += "?category=" + selectedCategory;
+        }
+        if (selectedGender !== "all") {
+            filterUrl += (selectedCategory === "") ? "?" : "&";
+            filterUrl += "gender=" + selectedGender;
+        }
+        if (selectedPriceRange !== "") {
+            filterUrl += (selectedCategory === "" && selectedGender === "all") ? "?" : "&";
+            filterUrl += "priceRange=" + selectedPriceRange;
+        }
+
+        // Chuyển hướng đến trang lọc
+        window.location.href = filterUrl;
+    });
+</script>

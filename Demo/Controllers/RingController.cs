@@ -13,7 +13,7 @@ namespace Demo.Controllers
     {
         public DPSportStoreEntities db = new DPSportStoreEntities();
         //View để thêm sản phẩm 
-        public ActionResult AddRing ()
+        public ActionResult AddRing()
         {
             return View();
         }
@@ -92,7 +92,7 @@ namespace Demo.Controllers
 
             return View(ring);
         }
-       //Xóa sản phẩm
+        //Xóa sản phẩm
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -197,8 +197,41 @@ namespace Demo.Controllers
 
             return View("Gocnhinnguoidung", products);
         }
+        //    //Phân trang
+        //    public ActionResult Gocnhinnguoidung(int? page, string category, string gender, string priceRange)
+        //    {
+        //        // Bước 1: Lấy danh sách sản phẩm từ cơ sở dữ liệu
+        //        var rings = db.Rings.ToList();
 
+        //        // Bước 2: Áp dụng các bộ lọc dựa trên category, gender và priceRange
+        //        if (!string.IsNullOrEmpty(category))
+        //        {
+        //            rings = rings.Where(p => p.JewelryType == category).ToList();
+        //        }
+        //        if (!string.IsNullOrEmpty(gender) && gender != "all")
+        //        {
+        //            rings = rings.Where(p => p.Gender == gender).ToList();
+        //        }
+        //        if (!string.IsNullOrEmpty(priceRange))
+        //        {
+        //            var priceRangeArray = priceRange.Split('-');
+        //            if (priceRangeArray.Length == 2)
+        //            {
+        //                decimal minPrice = Convert.ToDecimal(priceRangeArray[0]);
+        //                decimal maxPrice = Convert.ToDecimal(priceRangeArray[1]);
+        //                rings = rings.Where(p => p.Price >= minPrice && p.Price <= maxPrice).ToList();
+        //            }
+        //        }
 
+        //        // Bước 3: Định số sản phẩm trên mỗi trang
+        //        int pageSize = 10;
+
+        //        // Bước 4: Lấy số trang hiện tại
+        //        int pageNumber = (page ?? 1);
+
+        //        // Bước 5: Trả về danh sách sản phẩm đã lọc với phân trang
+        //        return View(rings.ToPagedList(pageNumber, pageSize));
+        //    }
+        //}
     }
-
 }
