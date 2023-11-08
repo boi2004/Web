@@ -42,7 +42,7 @@ namespace Demo.Controllers
                     // Thêm Category mới vào cơ sở dữ liệu và chuyển hướng đến trang danh sách
                     database.Categories.Add(category);
                     database.SaveChanges();
-                    return RedirectToAction("EmtyCart");
+                    return RedirectToAction("Index");
                 }
                 catch (Exception ex)
                 {

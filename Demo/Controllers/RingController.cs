@@ -14,8 +14,14 @@ namespace Demo.Controllers
     {
         public DPSportStoreEntities db = new DPSportStoreEntities();
         //View để thêm sản phẩm 
-        public ActionResult AddRing ()
+        public ActionResult AddRing ()        
         {
+            ViewBag.JewelryTypeList = db.Categories.Select(x => new SelectListItem(){
+            Text = x.NameCate.ToString(),
+            Value = x.IDCate.ToString()
+            }).ToList();
+
+
             return View();
         }
         [HttpPost]
