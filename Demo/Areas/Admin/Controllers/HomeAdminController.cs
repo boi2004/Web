@@ -33,7 +33,6 @@ namespace Demo.Areas.Admin.Controllers
             if (user.ToLower() == "admin" && password == "123456")
             {
                 Session["user"] = "admin";
-
                 return RedirectToAction("Index");
             }
             else

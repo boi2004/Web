@@ -6,7 +6,7 @@
 }
 
 <h2>Gocnhinnguoidung</h2>
-@using (Html.BeginForm("Gocnhinnguoidung", "Ring", FormMethod.Get))
+@using (Html.BeginForm("Gocnhinnguoidung", "Ring", FormMethod.Get, new { id = "filter-form", data_url = Url.Action("Gocnhinnguoidung", "Ring") }))
 {
     <div class="filter-buttons">
         <label for="category">Loại:</label>
@@ -28,110 +28,114 @@
             <option value="">Tất cả</option>
             <option value="0-100000000">Giá dưới 100 Triệu</option>
             <option value="100000000-800000000">Giá 100 Triệu - 200 Triệu</option>
-            <option value="200000000-100000000000000000000000000000000">Giá trên 200 triệu</option>
+            <option value="200000000-100000000000000000000000000000000">Giá 200 triệu trở lên</option>
         </select>
 
         <input type="submit" value="Lọc">
     </div>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Brand)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Material)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.JewelryType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Collection)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GoldCarat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GemType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaterialColor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImagePro)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Material)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JewelryType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Collection)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GoldCarat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GemType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaterialColor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagePro)
-            </td>
-            <td>
-                <a href="/ShoppingCart/AddToCart/@item.RingID" class="btn btn-default">Buy</a>
-                @Html.ActionLink("Detail", "Details", new { id = item.RingID })
-            </td>
-        </tr>
-    }
-</table>
-
 <script>
-    // Bắt sự kiện khi nút "Lọc" được nhấn
-    document.getElementById("filter-button").addEventListener("click", function () {
+    document.getElementById("filter-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
         var selectedCategory = document.getElementById("category").value;
         var selectedGender = document.getElementById("gender").value;
         var selectedPriceRange = document.getElementById("priceRange").value;
 
-        var filterUrl = "/Ring/Gocnhinnguoidung"; // Đổi đường dẫn dựa vào controller và action của bạn
-        if (selectedCategory !== "") {
-            filterUrl += "?category=" + selectedCategory;
+        var form = e.target;
+        var filterUrl = form.getAttribute("data_url");
+
+        if (selectedCategory && selectedCategory !== "") {
+            filterUrl += "?category=" + encodeURIComponent(selectedCategory);
         }
-        if (selectedGender !== "all") {
-            filterUrl += (selectedCategory === "") ? "?" : "&";
-            filterUrl += "gender=" + selectedGender;
+        if (selectedGender !== "all" && selectedGender !== "") {
+            filterUrl += (filterUrl.includes("?") ? "&" : "?");
+            filterUrl += "gender=" + encodeURIComponent(selectedGender);
         }
-        if (selectedPriceRange !== "") {
-            filterUrl += (selectedCategory === "" && selectedGender === "all") ? "?" : "&";
-            filterUrl += "priceRange=" + selectedPriceRange;
+        if (selectedPriceRange && selectedPriceRange !== "") {
+            filterUrl += (filterUrl.includes("?") ? "&" : "?");
+            filterUrl += "priceRange=" + encodeURIComponent(selectedPriceRange);
         }
 
-        // Chuyển hướng đến trang lọc
         window.location.href = filterUrl;
     });
 </script>
+
+
+
+
+<div class="product-list">
+    @foreach (var item in Model)
+    {
+        <div class="product-item">
+            <div id="concubee">
+                <div class="product-detail">
+                    <div class="product-detail">
+                        <div class="product-label">Hình ảnh:</div>
+                        <div class="product-value">@Html.DisplayFor(modelItem => item.ImagePro)</div>
+                    </div>
+                    <div class="product-label">Thương hiệu:</div>
+                    <div class="product-value">@Html.DisplayFor(modelItem => item.Brand)</div>
+                </div>
+                <div class="product-detail">
+                    <div class="product-label">Màu chất liệu:</div>
+                    <div class="product-value">@Html.DisplayFor(modelItem => item.MaterialColor)</div>
+                </div>
+            </div>
+            <div class="product-actions">
+                <a href="/ShoppingCart/AddToCart/@item.RingID" class="btn btn-default">Mua</a>
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.RingID }, new { @class = "your-css-class" })
+            </div>
+        </div>
+    }
+</div>
+<style>
+    /* Thiết kế gói bên ngoài danh sách sản phẩm */
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* Thiết kế mỗi mục sản phẩm */
+    .product-item {
+        width: calc(25% - 10px); /* 25% để hiển thị 4 sản phẩm trên hàng */
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    /* Thiết kế thông tin sản phẩm */
+    .product-detail {
+        margin-bottom: 10px;
+    }
+
+    .product-label {
+        font-weight: bold;
+    }
+
+    /* Thiết kế nút mua và liên kết chi tiết */
+    .product-actions a {
+        display: inline-block;
+        margin-bottom: 0px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        text-align:center;
+        margin-right:20%;
+        border-radius:5px;
+
+    }
+
+        .product-actions a:hover {
+            background-color: #0056b3;
+        }
+        .btn-btn-fefault
+        {
+            margin-top:12px;
+            margin-right:50px:
+        }
+
+</style>

@@ -189,6 +189,11 @@
     <Compile Include="Models\Ring.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\VỉewModel\Category.cs" />
+    <Compile Include="Models\VỉewModel\Customer.cs" />
+    <Compile Include="Models\VỉewModel\OrderDetail.cs" />
+    <Compile Include="Models\VỉewModel\OrderPro.cs" />
+    <Compile Include="Models\VỉewModel\Ring.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
