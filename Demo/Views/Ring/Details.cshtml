@@ -2,28 +2,75 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
-}B
-<h2>Details</h2>
-<div>
-    <h4>Ring</h4>B
+}
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    dl {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    dt {
+        flex-basis: 30%;
+        font-weight: bold;
+        color: #555;
+    }
+
+    dd {
+        flex-basis: 70%;
+        color: #333;
+    }
+
+    hr {
+        border: 1px solid #ddd;
+        margin: 20px 0;
+    }
+
+    p {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+
+<div class="container">
+    <h2>Xem chi tiết sản phẩm</h2>
     <hr />
-    <dl class="dl-horizontal">
+
+    <dl>
+        <dt>@Html.DisplayNameFor(model => model.Brand)</dt>
+        <dd>@Html.DisplayFor(model => model.Brand)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Material)</dt>
+        <dd>@Html.DisplayFor(model => model.Material)</dd>
         <dt>
             @Html.DisplayNameFor(model => model.Brand)
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Material)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Material)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.JewelryType)
         </dt>
@@ -79,17 +126,13 @@
         <dd>
             @Html.DisplayFor(model => model.MaterialColor)
         </dd>
+        <!-- Thêm các thành phần khác tương tự -->
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagePro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImagePro)
-        </dd>
-
+        <dt>@Html.DisplayNameFor(model => model.ImagePro)</dt>
+        <dd>@Html.DisplayFor(model => model.ImagePro)</dd>
     </dl>
+
+    <p>
+        @Html.ActionLink("Quay lại danh sách", "SeeRing")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "SeeRing")
-</p>

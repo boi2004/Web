@@ -1,91 +1,124 @@
 ﻿@model Demo.Models.Customer
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi Tiết";
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
 
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IDCus)
-        </dt>
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.IDCus)
-        </dd>
+    .back-link {
+        margin-top: 20px;
+        text-align: center;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NameCus)
-        </dt>
+    .action-links {
+        text-align: center;
+        margin-top: 20px;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.NameCus)
-        </dd>
+        .action-links a {
+            margin-right: 20px;
+        }
+</style>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneCus)
-        </dt>
+<div class="container">
+    <h2>Chi Tiết</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneCus)
-        </dd>
+    <div>
+        <h4>Thông Tin Khách Hàng</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IDCus)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailCus)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IDCus)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EmailCus)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NameCus)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PassCus)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NameCus)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PassCus)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneCus)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ConfirmPassCus)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PhoneCus)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ConfirmPassCus)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailCus)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirthCus)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EmailCus)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirthCus)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PassCus)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressCus)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PassCus)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AddressCus)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ConfirmPassCus)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CityCus)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ConfirmPassCus)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CityCus)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfBirthCus)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.DateOfBirthCus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AddressCus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AddressCus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CityCus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CityCus)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="action-links">
+        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.IDCus }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Quay Lại Danh Sách", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

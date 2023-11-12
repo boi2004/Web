@@ -5,93 +5,90 @@
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IDCus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IDCus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NameCus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NameCus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneCus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneCus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailCus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailCus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PassCus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PassCus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ConfirmPassCus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ConfirmPassCus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirthCus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirthCus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressCus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddressCus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CityCus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CityCus)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<style>
+    body {
+        background-color: #f8f9fa;
     }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .delete-confirmation {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .edit-link {
+        display: inline-block;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="delete-confirmation">
+        <h3>Bạn có chắc muốn xóa thông tin này?</h3>
+    </div>
+
+    <div>
+        <h4>Thông Tin Khách Hàng</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IDCus)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IDCus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NameCus)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NameCus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneCus)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PhoneCus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailCus)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EmailCus)
+            </dd>
+
+            <!-- Thêm các trường thông tin khác ở đây -->
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions">
+                <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                @Html.ActionLink("Quay Lại Danh Sách", "Index", null, new { @class = "btn btn-secondary" })
+
+                <div class="edit-link">
+                    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.IDCus }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        }
+    </div>
 </div>
