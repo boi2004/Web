@@ -85,21 +85,36 @@ namespace Demo.Controllers
             {
                 try
                 {
-                    // Cập nhật thông tin khách hàng và chuyển hướng đến trang danh sách
-                    database.Entry(customer).State = EntityState.Modified;
+                    // Lấy khách hàng từ cơ sở dữ liệu
+                    var existingCustomer = database.Customers.Find(id);
+
+                    // Cập nhật thông tin khách hàng
+                    existingCustomer.NameCus = customer.NameCus;
+                    existingCustomer.PhoneCus = customer.PhoneCus;
+                    existingCustomer.EmailCus = customer.EmailCus;
+                    existingCustomer.PassCus = customer.PassCus;
+                    existingCustomer.ConfirmPassCus = customer.ConfirmPassCus;
+                    existingCustomer.DateOfBirthCus = customer.DateOfBirthCus;
+                    existingCustomer.AddressCus = customer.AddressCus;
+                    existingCustomer.CityCus = customer.CityCus;
+
+                    // Lưu thay đổi vào cơ sở dữ liệu
                     database.SaveChanges();
+
+                    // Chuyển hướng đến trang danh sách khách hàng
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
                 {
                     // Nếu có lỗi, hiển thị thông báo lỗi
-                    ModelState.AddModelError("", "Lỗi chỉnh sửa khách hàng: " + ex.Message);
+                    ModelState.AddModelError("", "Lỗi chỉnh sửa thông tin khách hàng: " + ex.Message);
                 }
             }
 
-            // Trả về view chỉnh sửa khách hàng với thông tin và thông báo lỗi (nếu có)
+            // Trả về view chỉnh sửa với thông tin và thông báo lỗi (nếu có)
             return View(customer);
         }
+
 
         // GET: Customers/Delete/5
         [HttpGet]

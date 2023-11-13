@@ -3,136 +3,124 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
-
 <style>
     body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
+        background-color: #f8f9fa;
     }
-
     .container {
-        max-width: 800px;
-        margin: 50px auto;
-        background-color: #fff;
+        max-width: 600px;
+        margin: 0 auto;
         padding: 20px;
-        border-radius: 5px;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
     }
 
-    h2 {
-        color: #333;
+    .back-link {
+        margin-top: 20px;
+        text-align: center;
     }
 
-    dl {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    dt {
-        flex-basis: 30%;
-        font-weight: bold;
-        color: #555;
-    }
-
-    dd {
-        flex-basis: 70%;
-        color: #333;
-    }
-
-    hr {
-        border: 1px solid #ddd;
-        margin: 20px 0;
-    }
-
-    p {
+    .action-links {
         text-align: center;
         margin-top: 20px;
     }
 
-    a {
-        color: #007bff;
-        text-decoration: none;
-    }
+        .action-links a {
+            margin-right: 20px;
+        }
 </style>
 
 <div class="container">
-    <h2>Xem chi tiết sản phẩm</h2>
-    <hr />
+    <h2>Chi Tiết</h2>
 
-    <dl>
-        <dt>@Html.DisplayNameFor(model => model.Brand)</dt>
-        <dd>@Html.DisplayFor(model => model.Brand)</dd>
+    <div>
+        <h4>Thông Tin Sản Phẩm</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Brand)
+            </dt>
 
-        <dt>@Html.DisplayNameFor(model => model.Material)</dt>
-        <dd>@Html.DisplayFor(model => model.Material)</dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.JewelryType)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Brand)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.JewelryType)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.JewelryType)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JewelryType)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Collection)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Collection)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Collection)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GoldCarat)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Collection)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.GoldCarat)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.GoldCarat)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GemType)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.GoldCarat)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.GemType)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.GemType)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.GemType)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MaterialColor)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MaterialColor)
-        </dd>
-        <!-- Thêm các thành phần khác tương tự -->
+            <dt>
+                @Html.DisplayNameFor(model => model.MaterialColor)
+            </dt>
 
-        <dt>@Html.DisplayNameFor(model => model.ImagePro)</dt>
-        <dd>@Html.DisplayFor(model => model.ImagePro)</dd>
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.MaterialColor)
+            </dd>
 
-    <p>
-        @Html.ActionLink("Quay lại danh sách", "SeeRing")
-    </p>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImagePro)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ImagePro)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="action-links">
+        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.RingID }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Quay Lại Danh Sách", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
 </div>
+
+
+
+
+
