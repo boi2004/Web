@@ -50,8 +50,8 @@
                             </div>
                             <div class="d-flex flex-row">
                                 <a href="/ShoppingCart/AddToCart/@item.RingID" class="btn btn-primary flex-fill me-1">Mua</a>
-                                <a href="/Ring/Details?id=@item.RingID" class="btn btn-danger">Chi tiết</a>
-
+                                @*<a href="/Ring/Details?id=@item.RingID" class="btn btn-danger">Chi tiết</a>*@
+                                <a href="/Ring/Details/@item.RingID" class="btn btn-danger">Chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -97,9 +97,9 @@
         border-radius: 5px;
     }
 
-    .product-actions a:hover {
+        .product-actions a:hover {
             background-color: #0056b3;
-    }  
+        }
 
     .btn-btn-fefault {
         margin-top: 12px;

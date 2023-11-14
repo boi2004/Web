@@ -18,6 +18,7 @@ namespace Demo.Models
         public Ring()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
+            ImagePro = "~/Content/Images/2.png";
         }
     
         public int RingID { get; set; }

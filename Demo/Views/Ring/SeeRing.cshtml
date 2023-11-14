@@ -80,8 +80,7 @@
             @Html.DisplayFor(modelItem => item.MaterialColor)
         </td>
         <td>
-            @*<img src="@Url.Content(item.ImagePro)" width="100"/>*@
-            @Html.DisplayFor(modelItem => item.ImagePro)
+            <img src="@Url.Content(item.ImagePro)" height="150" width="150" />
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.RingID }) |
