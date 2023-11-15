@@ -45,14 +45,14 @@
         <hr style="margin: auto">
         <div class="menu">
             <ul class="nav-menu">
-                <li><a href="#">Nhẫn</a></li>
-                <li><a href="#">Bông Tai</a></li>
-                <li><a href="#">Dây Cổ</a></li>
-                <li><a href="#">Vòng</a></li>
-                <li><a href="#">Đồng Hồ</a></li>
+                <li><a href="@Url.Action("LocNhan", "Ring")">Nhẫn</a></li>
+                <li><a href="@Url.Action("LocBongTai", "Ring")">Bông Tai</a></li>
+                <li><a href="@Url.Action("LocDayCo", "Ring")">Dây Cổ</a></li>
+                <li><a href="@Url.Action("LocVong", "Ring")">Vòng</a></li>
+                <li><a href="@Url.Action("LocDongHo", "Ring")">Đồng Hồ</a></li>
                 <li>
                     <div class="dropdown">
-                        <a class="dropbtn" href="#">Thương Hiệu</a>
+                        <a class="dropbtn" href="@Url.Action("LocThuongHieu", "Ring")">Thương Hiệu</a>
                         <div class="dropdown-content">
                             <div class="row">
                                 <div class="column3">
@@ -78,19 +78,33 @@
                     </div>
 
                 </li>
-                <li><a href="#">Quà Tặng</a></li>
+                <li><a href="@Url.Action("LocQuaTang", "Ring")">Quà Tặng</a></li>
             </ul>
             <div class="search">
-                <input type="text" placeholder="Tìm kiếm nhanh " />
-                <button type="submit"><i class="fas fa-search"></i></button>
+                <form id="filter-form" action="@Url.Action("TimKiem", "Ring")" method="get" data-url="@Url.Action("TimKiem", "Ring")">
+                    <input id="searchInput" type="text" name="keyword" placeholder="Tìm kiếm nhanh" />
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
             </div>
 
+            <!-- JavaScript -->
+            <script>
+                document.getElementById("filter-form").addEventListener("submit", function (e) {
+                    e.preventDefault();
+
+                    var keyword = document.getElementById("searchInput").value;
+                    var form = e.target;
+                    var filterUrl = form.getAttribute("data-url");
+
+                    if (keyword && keyword !== "") {
+                        filterUrl += "?keyword=" + encodeURIComponent(keyword);
+                    }
+                    window.location.href = filterUrl;
+                });
+            </script>
         </div>
-
         <!--Slide-->
-
     </div>
-
     @RenderBody()
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

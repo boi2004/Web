@@ -14,11 +14,12 @@ namespace Demo.Controllers
     {
         public DPSportStoreEntities db = new DPSportStoreEntities();
         //View để thêm sản phẩm 
-        public ActionResult AddRing ()        
+        public ActionResult AddRing()
         {
-            ViewBag.JewelryTypeList = db.Categories.Select(x => new SelectListItem(){
-            Text = x.NameCate.ToString(),
-            Value = x.IDCate.ToString()
+            ViewBag.JewelryTypeList = db.Categories.Select(x => new SelectListItem()
+            {
+                Text = x.NameCate.ToString(),
+                Value = x.IDCate.ToString()
             }).ToList();
 
 
@@ -99,7 +100,7 @@ namespace Demo.Controllers
 
             return View(ring);
         }
-       //Xóa sản phẩm
+        //Xóa sản phẩm
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -156,53 +157,75 @@ namespace Demo.Controllers
             }
             base.Dispose(disposing);
         }
-        //Lọc theo giá tiền:
-        public ActionResult FilterByPrice(decimal? minPrice, decimal? maxPrice)
+        // Lọc theo Nhẫn
+        public ActionResult LocNhan()
         {
-            // Khởi tạo danh sách sản phẩm
-            var products = db.Rings.ToList();
+            // Lấy danh sách sản phẩm từ bảng Rings, bao gồm thông tin Category liên quan
+            var danhSachLoc = db.Rings.Include(r => r.Category).Where(r => r.JewelryType == "1").ToList();
 
-            // Lọc sản phẩm theo giá tiền
-            if (minPrice.HasValue)
-            {
-                products = products.Where(p => p.Price >= minPrice.Value).ToList();
-            }
-
-            if (maxPrice.HasValue)
-            {
-                products = products.Where(p => p.Price <= maxPrice.Value).ToList();
-            }
-
-            return View("Gocnhinnguoidung", products);
-        }
-        //Lọc theo giới tính:
-        public ActionResult FilterByGender(string gender)
-        {
-            // Khởi tạo danh sách sản phẩm
-            var products = db.Rings.ToList();
-
-            // Lọc sản phẩm theo giới tính
-            if (!string.IsNullOrEmpty(gender))
-            {
-                products = products.Where(p => p.Gender == gender).ToList();
-            }
-
-            return View("Gocnhinnguoidung", products);
+            // Chuyển kết quả lọc đến view "Gocnhinnguoidung" để hiển thị danh sách sản phẩm cho người dùng
+            return View("Gocnhinnguoidung", danhSachLoc);
         }
 
-        //Lọc theo loại:
-        public ActionResult FilterByCategory(string category)
+        // Lọc theo Bông tai
+        public ActionResult LocBongTai()
         {
-            // Khởi tạo danh sách sản phẩm
-            var products = db.Rings.ToList();
+            var danhSachLoc = db.Rings.Include(r => r.Category).Where(r => r.JewelryType == "2").ToList();
+            return View("Gocnhinnguoidung", danhSachLoc);
+        }
 
-            // Lọc sản phẩm theo loại
-            if (!string.IsNullOrEmpty(category))
-            {
-                products = products.Where(p => p.JewelryType == category).ToList();
-            }
+        // Lọc theo Dây cổ
+        public ActionResult LocDayCo()
+        {
+            var danhSachLoc = db.Rings.Include(r => r.Category).Where(r => r.JewelryType == "3").ToList();
+            return View("Gocnhinnguoidung", danhSachLoc);
+        }
 
-            return View("Gocnhinnguoidung", products);
+        // Lọc theo Vòng
+        public ActionResult LocVong()
+        {
+            var danhSachLoc = db.Rings.Include(r => r.Category).Where(r => r.JewelryType == "4").ToList();
+            return View("Gocnhinnguoidung", danhSachLoc);
+        }
+
+        // Lọc theo Đồng hồ
+        public ActionResult LocDongHo()
+        {
+            var danhSachLoc = db.Rings.Include(r => r.Category).Where(r => r.JewelryType == "5").ToList();
+            return View("Gocnhinnguoidung", danhSachLoc);
+        }
+
+        // Lọc theo Thương hiệu
+        public ActionResult LocThuongHieu()
+        {
+            var danhSachLoc = db.Rings.Include(r => r.Category).Where(r => r.JewelryType == "6").ToList();
+            return View("Gocnhinnguoidung", danhSachLoc);
+        }
+
+        // Lọc theo Quà tặng
+        public ActionResult LocQuaTang()
+        {
+            var danhSachLoc = db.Rings.Include(r => r.Category).Where(r => r.JewelryType == "7").ToList();
+            return View("Gocnhinnguoidung", danhSachLoc);
+        }
+        //Tìm kiếm theo keyword
+        public ActionResult TimKiem(string keyword)
+        {
+            // Tìm kiếm các sản phẩm có ít nhất một thuộc tính chứa keyword
+            var danhSachTimKiem = db.Rings.Where(r =>
+                // Mỗi điều kiện tìm kiếm tương ứng với một thuộc tính của sản phẩm
+                r.Brand.Contains(keyword) ||           // Tìm kiếm theo thương hiệu
+                r.Material.Contains(keyword) ||        // Tìm kiếm theo chất liệu
+                r.Category.NameCate.Contains(keyword) ||    // Tìm kiếm theo loại trang sức đối với bảng category
+                r.Collection.Contains(keyword) ||      // Tìm kiếm theo bộ sưu tập
+                r.GemType.Contains(keyword) ||         // Tìm kiếm theo loại đá quý
+                r.Gender.Contains(keyword) ||           // Tìm kiếm theo giới tính
+                r.MaterialColor.Contains(keyword) ||   // Tìm kiếm theo màu chất liệu
+                (r.Price.HasValue && r.Price.ToString().Contains(keyword)) || // Tìm kiếm theo giá (nếu có)
+                (r.GoldCarat.HasValue && r.GoldCarat.ToString().Contains(keyword)) // Tìm kiếm theo chỉ số carat (nếu có)
+            ).ToList();
+
+            return View("Gocnhinnguoidung", danhSachTimKiem);
         }
 
 
