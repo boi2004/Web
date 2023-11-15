@@ -6,6 +6,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Demo.Models;
+using PagedList;
+using PagedList.Mvc;
 
 
 namespace Demo.Controllers
@@ -147,6 +149,18 @@ namespace Demo.Controllers
             var rings = db.Rings.ToList();
             return View(rings);
         }
+        //Danh sách sản phẩm người dùng&& Phân trang
+        //public ActionResult Gocnhinnguoidung(int? page)
+        //{
+        //    int pageSize = 10;
+        //    int pageNumber = (page ?? 1);
+
+        //    var rings = db.Rings.ToList();
+        //    IPagedList<Ring> pagedRings = rings.ToPagedList(pageNumber, pageSize);
+
+        //    return View(pagedRings);
+        //}
+
 
         // Giải phóng tài nguyên khi Controller hoàn thành
         protected override void Dispose(bool disposing)

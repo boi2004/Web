@@ -1,39 +1,11 @@
 ﻿@model IEnumerable<Demo.Models.Ring>
-
+@*@model PagedList.PagedList<Demo.Models.Ring>*@
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Gocnhinnguoidung";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Danh Sách Sản Phẩm</h2>
-
-<script>
-    document.getElementById("filter-form").addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        var selectedCategory = document.getElementById("category").value;
-        var selectedGender = document.getElementById("gender").value;
-        var selectedPriceRange = document.getElementById("priceRange").value;
-
-        var form = e.target;
-        var filterUrl = form.getAttribute("data-url");
-
-        if (selectedCategory && selectedCategory !== "") {
-            filterUrl += "?category=" + encodeURIComponent(selectedCategory);
-        }
-        if (selectedGender !== "all" && selectedGender !== "") {
-            filterUrl += (filterUrl.includes("?") ? "&" : "?");
-            filterUrl += "gender=" + encodeURIComponent(selectedGender);
-        }
-        if (selectedPriceRange && selectedPriceRange !== "") {
-            filterUrl += (filterUrl.includes("?") ? "&" : "?");
-            filterUrl += "priceRange=" + encodeURIComponent(selectedPriceRange);
-        }
-        window.location.href = filterUrl;
-    });
-</script>
-
-
 <section>
     <div class="p-3">
         <div class="row w-100">
@@ -60,6 +32,14 @@
         </div>
     </div>
 </section>
+@*<div class="pagination-info">
+    Trang@(Model.PageCount<Model.PageNumber ? 0 :Model.PageNumber) / @Model.PageCount
+</div>*@
+<!--<div class="pagination-container">-->
+    <!-- Chữ "Trang" và phân trang -->
+    <!--<div class="pagination-text">Trang: </div>
+    <!--Html.PagedListPager(Model, page => Url.Action("Gocnhinnguoidung", new { page }))  Thêm a còng vào trước html để phân trang--> 
+<!--</div>-->
 
 <style>
     /* Thiết kế gói bên ngoài danh sách sản phẩm */
@@ -104,5 +84,72 @@
     .btn-btn-fefault {
         margin-top: 12px;
         margin-right: 50px;
+    }
+    /* CSS để canh giữa và đặt kích thước cho thông tin trang và phân trang */
+    .pagination-info {
+        text-align: center; /* Canh giữa nội dung */
+        font-size: 18px; /* Kích thước font */
+        margin-top: 10px; /* Khoảng cách với phân trang */
+        margin-bottom: 5px;
+        display:inline-block;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center; /* Canh giữa theo chiều ngang */
+        margin-top: 20px; /* Khoảng cách với nội dung trang */
+    }
+
+    /* CSS cho phân trang */
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .pagination li {
+            margin: 0 5px; /* Khoảng cách giữa các nút phân trang */
+        }
+
+        .pagination a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .pagination a:hover {
+                background-color: #0056b3;
+            }
+
+        .pagination .disabled {
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .pagination .current {
+            background-color: #0056b3;
+            color: #fff;
+        }
+    .pagination-info {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Canh giữa theo chiều dọc */
+        margin-top: 20px;
+    }
+
+    .pagination-text {
+        margin-right: 10px; /* Khoảng cách giữa chữ "Trang" và phân trang */
+        font-weight: bold; /* Đậm chữ */
     }
 </style>
