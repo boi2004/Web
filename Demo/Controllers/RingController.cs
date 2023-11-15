@@ -32,6 +32,12 @@ namespace Demo.Controllers
         //Controler để thêm sản phẩm
         public ActionResult AddRing(Ring ring, HttpPostedFileBase imageFile)
         {
+
+            ViewBag.JewelryTypeList = db.Categories.Select(x => new SelectListItem()
+            {
+                Text = x.NameCate.ToString(),
+                Value = x.IDCate.ToString()
+            }).ToList();
             if (ModelState.IsValid)
             {
                 if (imageFile != null)
