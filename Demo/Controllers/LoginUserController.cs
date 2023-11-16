@@ -116,6 +116,7 @@ namespace Demo.Controllers
         public ActionResult LogOutUser()
         {
             // Hủy bỏ phiên làm việc của người dùng
+            Session["user"] = null;
             Session.Abandon();
 
             // Chuyển hướng về trang đăng nhập sau khi đăng xuất

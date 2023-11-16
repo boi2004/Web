@@ -81,7 +81,7 @@ namespace NIKE.Controllers
         // Action để xử lý thanh toán
         public ActionResult CheckOut(FormCollection form)
         {
-            if(Session["user"] == null)
+            if(Session["user"] == null || Session["user"].ToString() == "")
             {
                 return RedirectToAction("LoginCustomer", "LoginUser");
             } 
