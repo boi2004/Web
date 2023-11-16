@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Demo.Models.Customer>
+
+@{
+    ViewBag.Title = "Danh Sách Tài Khoản Khách Hàng";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ced4da;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .table a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+            .table a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<div class="container">
+    <h2>Danh Sách Tài Khoản Khách Hàng</h2>
+    <p>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Tạo Mới</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.IDCus)</th>
+            <th>@Html.DisplayNameFor(model => model.NameCus)</th>
+            <th>@Html.DisplayNameFor(model => model.PhoneCus)</th>
+            <th>@Html.DisplayNameFor(model => model.EmailCus)</th>
+            @*<th>@Html.DisplayNameFor(model => model.PassCus)</th>
+            <th>@Html.DisplayNameFor(model => model.ConfirmPassCus)</th>*@
+            <th>@Html.DisplayNameFor(model => model.DateOfBirthCus)</th>
+            <th>@Html.DisplayNameFor(model => model.AddressCus)</th>
+            <th>@Html.DisplayNameFor(model => model.CityCus)</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.IDCus)</td>
+                <td>@Html.DisplayFor(modelItem => item.NameCus)</td>
+                <td>@Html.DisplayFor(modelItem => item.PhoneCus)</td>
+                <td>@Html.DisplayFor(modelItem => item.EmailCus)</td>
+                @*<td>@Html.DisplayFor(modelItem => item.PassCus)</td>
+                <td>@Html.DisplayFor(modelItem => item.ConfirmPassCus)</td>*@
+                <td>@Html.DisplayFor(modelItem => item.DateOfBirthCus)</td>
+                <td>@Html.DisplayFor(modelItem => item.AddressCus)</td>
+                <td>@Html.DisplayFor(modelItem => item.CityCus)</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.IDCus })">Chỉnh Sửa</a> |
+                    <a href="@Url.Action("Details", new { id = item.IDCus })">Chi Tiết</a> |
+                    <a href="@Url.Action("Delete", new { id = item.IDCus })">Xóa</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

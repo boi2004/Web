@@ -1,0 +1,127 @@
+﻿@model Demo.Models.Ring
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .back-link {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .action-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .action-links a {
+            margin-right: 20px;
+        }
+</style>
+
+<div class="container">
+    <h2>Chi Tiết</h2>
+
+    <div>
+        <h4>Thông Tin Sản Phẩm</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Brand)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Brand)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.JewelryType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.JewelryType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Collection)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Collection)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GoldCarat)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GoldCarat)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GemType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GemType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MaterialColor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaterialColor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImagePro)
+            </dt>
+
+            <dd>
+                <img src="@Url.Content(Model.ImagePro)" height="150" width="150" />
+            </dd>
+        </dl>
+    </div>
+
+    <div class="action-links">
+        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.RingID }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Quay Lại Danh Sách", "Gocnhinnguoidung", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+
+
+
+
+
