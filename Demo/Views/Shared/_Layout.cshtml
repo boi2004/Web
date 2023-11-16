@@ -29,13 +29,29 @@
                     <li>
                         <i class="fas fa-shopping-cart"></i>
                         <a href="@Url.Action("ShowCart", "ShoppingCart")" id="btn-regiEster">Giỏ Hàng</a>
-                    </li>
+                    </li><i class="fa-solid fa-right-from-bracket fa-beat"></i>
+                         <li>
+                             <i class="fas fa-users"></i>
+
+                             @if (User.Identity.IsAuthenticated)
+                             {
+                                 <a href="@Url.Action("Logout", "Account")" id="btn-logout">@User.Identity.Name (Đăng xuất)</a>
+                             }
+                             else
+                             {
+                                 <a href="@Url.Action("LoginCustomer", "LoginUser")" id="btn-register">Đăng nhập</a>
+                             }
+                         </li>
                     <li>
-                        <i class="fas fa-users"></i>
-
-                        <a href="@Url.Action("LoginCustomer", "LoginUser")" id="btn-regiEster">Tài Khoản</a>
-
-
+                        <i class="fa-right-from-bracket"></i>
+                        @if (User.Identity.IsAuthenticated)
+                        { 
+                            <a href="@Url.Action("Logout", "Account")" id="btn-logout">Đăng xuất</a>
+                        }
+                        else
+                        {
+                            <a href="#!" id="btn-register"></a>
+                        }
                     </li>
 
                 </ul>
