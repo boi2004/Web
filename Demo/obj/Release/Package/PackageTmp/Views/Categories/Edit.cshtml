@@ -1,0 +1,97 @@
+﻿@model Demo.Models.Category
+
+@{
+    ViewBag.Title = "Chỉnh Sửa";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        width: 400px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #ffd800;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .dl-horizontal {
+        font-size: 16px;
+    }
+
+    .btn-group {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn {
+        margin: 0 10px;
+    }
+    .btn-edit {
+        background-color: yellow; /* Màu vàn */
+        color: #fff;
+        border: 1px solid yellow; /* Màu vàng */
+        margin: 0 10px;
+    }
+
+        .btn-edit:hover {
+            background-color: darkred; /* Màu đỏ đậm khi hover */
+            border: 1px solid darkred; /* Màu đỏ đậm khi hover */
+        }
+</style>
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Chỉnh Sửa Danh Mục</h2>
+        </div>
+        <div class="card-body">
+            <h3 class="text-center">Thông tin chi tiết về danh mục</h3> 
+            <hr />
+            @using (Html.BeginForm("Edit", "Categories", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <dl class="dl-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IDCate, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.IDCate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IDCate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NameCate, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.NameCate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NameCate, "", new { @class = "text-danger" })
+                    </div>
+                </dl>
+                <div class="text-center">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                        @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

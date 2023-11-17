@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DPSportStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DPSportStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminUsers" EntityType="DPSportStoreModel.AdminUser" />
+    <EntitySet Name="Categories" EntityType="DPSportStoreModel.Category" />
+    <EntitySet Name="Customers" EntityType="DPSportStoreModel.Customer" />
+    <EntitySet Name="OrderDetails" EntityType="DPSportStoreModel.OrderDetail" />
+    <EntitySet Name="OrderProes" EntityType="DPSportStoreModel.OrderPro" />
+    <AssociationSet Name="FK__OrderPro__IDCus__52593CB8" Association="DPSportStoreModel.FK__OrderPro__IDCus__52593CB8">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="OrderPro" EntitySet="OrderProes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__IDOrd__5629CD9C" Association="DPSportStoreModel.FK__OrderDeta__IDOrd__5629CD9C">
+      <End Role="OrderPro" EntitySet="OrderProes" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <EntitySet Name="Rings" EntityType="DPSportStoreModel.Ring" />
+    <AssociationSet Name="FK_Ring_Category" Association="DPSportStoreModel.FK_Ring_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Ring" EntitySet="Rings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Ring" Association="DPSportStoreModel.FK_OrderDetail_Ring">
+      <End Role="Ring" EntitySet="Rings" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NameUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RoleUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordUser" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="IDCate" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCate" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="NameCate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Rings" Relationship="DPSportStoreModel.FK_Ring_Category" FromRole="Category" ToRole="Ring" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="IDCus" />
+    </Key>
+    <Property Name="IDCus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneCus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="EmailCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PassCus" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="ConfirmPassCus" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DateOfBirthCus" Type="DateTime" Precision="0" />
+    <Property Name="AddressCus" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="CityCus" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="OrderProes" Relationship="DPSportStoreModel.FK__OrderPro__IDCus__52593CB8" FromRole="Customer" ToRole="OrderPro" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDProduct" Type="Int32" />
+    <Property Name="IDOrder" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="UnitPrice" Type="Double" />
+    <NavigationProperty Name="OrderPro" Relationship="DPSportStoreModel.FK__OrderDeta__IDOrd__5629CD9C" FromRole="OrderDetail" ToRole="OrderPro" />
+    <NavigationProperty Name="Ring" Relationship="DPSportStoreModel.FK_OrderDetail_Ring" FromRole="OrderDetail" ToRole="Ring" />
+  </EntityType>
+  <EntityType Name="OrderPro">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateOrder" Type="DateTime" Precision="0" />
+    <Property Name="IDCus" Type="Int32" />
+    <Property Name="AddressDeliverry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customer" Relationship="DPSportStoreModel.FK__OrderPro__IDCus__52593CB8" FromRole="OrderPro" ToRole="Customer" />
+    <NavigationProperty Name="OrderDetails" Relationship="DPSportStoreModel.FK__OrderDeta__IDOrd__5629CD9C" FromRole="OrderPro" ToRole="OrderDetail" />
+  </EntityType>
+  <Association Name="FK__OrderPro__IDCus__52593CB8">
+    <End Type="DPSportStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="DPSportStoreModel.OrderPro" Role="OrderPro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="IDCus" />
+      </Principal>
+      <Dependent Role="OrderPro">
+        <PropertyRef Name="IDCus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__IDOrd__5629CD9C">
+    <End Type="DPSportStoreModel.OrderPro" Role="OrderPro" Multiplicity="0..1" />
+    <End Type="DPSportStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderPro">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="IDOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Ring">
+    <Key>
+      <PropertyRef Name="RingID" />
+    </Key>
+    <Property Name="RingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Brand" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Material" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="JewelryType" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Collection" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="GoldCarat" Type="Int32" />
+    <Property Name="GemType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MaterialColor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Category" Relationship="DPSportStoreModel.FK_Ring_Category" FromRole="Ring" ToRole="Category" />
+    <NavigationProperty Name="OrderDetails" Relationship="DPSportStoreModel.FK_OrderDetail_Ring" FromRole="Ring" ToRole="OrderDetail" />
+    <Property Name="ImagePro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Ring_Category">
+    <End Type="DPSportStoreModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="DPSportStoreModel.Ring" Role="Ring" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="IDCate" />
+      </Principal>
+      <Dependent Role="Ring">
+        <PropertyRef Name="JewelryType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Ring">
+    <End Type="DPSportStoreModel.Ring" Role="Ring" Multiplicity="0..1" />
+    <End Type="DPSportStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ring">
+        <PropertyRef Name="RingID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="IDProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

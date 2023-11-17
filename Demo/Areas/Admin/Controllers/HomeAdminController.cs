@@ -14,7 +14,7 @@ namespace Demo.Areas.Admin.Controllers
         {
             if (Session["user"] == null)
             {
-                return RedirectToAction("DangNhap"); ;
+                return RedirectToAction("DangNhap");
             }
             else
             {
