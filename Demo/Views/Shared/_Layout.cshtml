@@ -29,23 +29,24 @@
                     <li>
                         <i class="fas fa-shopping-cart"></i>
                         <a href="@Url.Action("ShowCart", "ShoppingCart")" id="btn-regiEster">Giỏ Hàng</a>
-                    </li><i class="fa-solid fa-right-from-bracket fa-beat"></i>
-                         <li>
-                             <i class="fas fa-users"></i>
+                    </li>
+                    <i class="fa-solid fa-right-from-bracket fa-beat"></i>
+                    <li>
+                        <i class="fas fa-users"></i>
 
-                             @if (User.Identity.IsAuthenticated)
-                             {
-                                 <a href="@Url.Action("Logout", "Account")" id="btn-logout">@User.Identity.Name (Đăng xuất)</a>
-                             }
-                             else
-                             {
-                                 <a href="@Url.Action("LoginCustomer", "LoginUser")" id="btn-register">Đăng nhập</a>
-                             }
-                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Logout", "Account")" id="btn-logout">@User.Identity.Name (Đăng xuất)</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("LoginCustomer", "LoginUser")" id="btn-register">Đăng nhập</a>
+                        }
+                    </li>
                     <li>
                         <i class="fa-right-from-bracket"></i>
                         @if (User.Identity.IsAuthenticated)
-                        { 
+                        {
                             <a href="@Url.Action("Logout", "Account")" id="btn-logout">Đăng xuất</a>
                         }
                         else
@@ -125,102 +126,112 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
-<header>
-    <img src="https://cdn.pnj.io/images/logo/pnj.com.vn.png" alt="PNJ Logo" width="130" height="50">
-</header>
-<!--Footer-->
-<div class="container">
-    <div class="left">
-        <br>
-        <h2>© 2017 Công Ty Cổ Phần Vàng Bạc Đá Quý Phú Nhuận</h2>
-        <p>
-            170E Phan Đăng Lưu, P.3, Q.Phú Nhuận, TP.Hồ Chí Minh<br>
-            ÐT: <a href="tel:02839951703">02839951703</a> - Fax: <a href="tel:02839951702">02839951702</a>
-        </p>
-        <p>
-            <a href="https://cdn.pnj.io/images/quan-he-co-dong/2023/10b-20230207-PNJ-GCN-DKDN-lan-35-CBTT-File-nhe.pdf" class="blue-link">
-                Giấy chứng nhận đăng ký doanh nghiệp: 0300521758 do Sở Kế hoạch & Đầu tư TP.HCM cấp lần đầu ngày 02/01/2004. Ngành, nghề kinh doanh
-
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+            <span>Hãy liên hệ với chung tôi thông qua:</span>
+        </div>
+        <!-- Left -->
+        <!-- Right -->
+        <div>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-facebook-f"></i>
             </a>
-        </p>
-        <br>
-        <p>
-            Gọi mua: <a href="tel:1800545457" class="blue-link">1800545457 (phím 1)</a><br>
-            Khiếu nại: <a href="tel:1800545457" class="blue-link">1800545457 (phím 2)</a>
-        </p>
-    </div>
-    <div class="center">
-        <h2>VỀ PNJ</h2>
-        <ul>
-            <div class="nd">
-            <li><a href="https://www.pnj.com.vn/cau-chuyen-pnj.html">Câu chuyện PNJ</a></li>
-            <li><a href="https://tuyendung.pnj.com.vn/">Tuyển dụng</a></li>
-            <li><a href="https://export.pnj.com.vn/">Xuất khẩu</a></li>
-            <li><a href="https://pnjsi.pnj.com.vn/">Kinh doanh sỉ</a></li>
-            <li><a href="https://pnjlab.com.vn/vn/Default.aspx">Kinh doanh kim cương</a></li>
-            <li><a href="https://giavang.pnj.com.vn/">kinh doanh vàng miếng</a></li>
-    </div>
-    </ul>
-</div>
-<div class="right">
-    <h2>DỊCH VỤ KHÁCH HÀNG</h2>
-    <ul>
-        <li><a href="https://www.pnj.com.vn/blog/huong-dan-do-size-trang-suc/">Hướng dẫn đo size trang sức</a></li>
-        <li><a href="https://www.pnj.com.vn/tra-gop/">Mua hàng trả góp</a></li>
-        <li><a href="https://www.pnj.com.vn/huong-dan-mua-hang-va-thanh-toan.html">Hướng dẫn mua hàng và thanh toán</a></li>
-        <li><a href="https://www.pnj.com.vn/chinh-sach-hoan-tien.html">Chính sách hoàn tiền</a></li>
-        <li><a href="https://www.pnj.com.vn/chinh-sach-giao-hang.html">Chính sách giao hàng</a></li>
-        <li><a href="https://www.pnj.com.vn/blog/cam-nang-su-dung-trang-suc/">Cẩm nang sử dụng trang sức</a></li>
-        <li><a href="https://www.pnj.com.vn/chinh-sach-bao-hanh-va-thu-doi.html">Chính sách bảo hành thu đổi</a></li>
-        <li><a href="https://www.pnj.com.vn/chinh-sach-khach-hang-than-thiet.html">Chính sách khách hàng thân thiết</a></li>
-        <li><a href="https://www.pnj.com.vn/chinh-sach-bao-mat-thong-tin-khach-hang.html">Chính sách bảo mật thông tin khách hàng</a></li>
-        <li><a href="https://www.pnj.com.vn/chinh-sach-xu-ly-du-lieu-ca-nhan.html">Chính sách xử lý dữ liệu cá nhân</a></li>
-        <li><a href="https://www.pnj.com.vn/cau-hoi-thuong-gap.html">Câu hỏi thường gặp</a></li>
-    </ul>
-    <p><b>PHƯƠNG THỨC THANH TOÁN</b></p>
-    <div class="tt">
-        <img src="https://www.pnj.com.vn/design/themes/pnjrovski/media/images/payments/visa.svg" alt="Visa">
-        <img src="https://www.pnj.com.vn/design/themes/pnjrovski/media/images/payments/mastercard.svg" alt="Mastercard">
-        <img src="https://www.pnj.com.vn/design/themes/pnjrovski/media/images/payments/jcb.svg" alt="JCB">
-        <p><b>CHỨNG NHẬN</b></p>
-        <img src="https://cdn.pnj.io/images/image-update/op-da-thong-bao-bo-cong-thuong-183x60.png" alt="Chứng nhận bộ công thương" width="150" height="50">
-    </div>
-</div>
-<div class="ty-footer ty-float-left">
-    <div class="connect-us">
-        <h2 class="ty-footer-general__header">
-            <h2><span>KẾT NỐI TẠI</span></h2>
-        </h2>
-        <div class="connect-us-outer">
-            <a class="connect-link" aria-label="PNJ Facebook" rel="nofollow noopener" target="_blank" href="https://www.facebook.com/PNJ.COM.VN" title="PNJ Facebook" alt="PNJ Facebook">
-                <i>
-                    <img class="img-lazyload" data-src="" alt="Facebook" src="https://cdn.pnj.io/images/image-update/footer/facebook.svg" style="opacity: 1;height:50px; width:25px;">
-                </i>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-twitter"></i>
             </a>
-            <a class="connect-link" aria-label="Instagram" rel="nofollow noopener" target="_blank" href="https://www.instagram.com/pnj_jewelry/" title="Instagram" alt="Instagram">
-                <i>
-                    <img class="img-lazyload" data-src="" alt="Instagram" src="https://cdn.pnj.io/images/image-update/footer/instagram.svg" style="opacity: 1;height:50px; width:25px;">
-                </i>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-google"></i>
             </a>
-            <a class="connect-link" aria-label="Youtube" rel="nofollow noopener" target="_blank" href="https://www.youtube.com/user/PhuNhuanJewelry" title="Youtube" alt="Youtube">
-                <i>
-                    <img class="img-lazyload" data-src="" alt="Youtube" src="https://cdn.pnj.io/images/image-update/footer/youtube.svg" style="opacity: 1;height:50px; width:25px;">
-                </i>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-instagram"></i>
             </a>
-            <a class="connect-link" aria-label="Email" rel="nofollow noopener" target="_blank" href="mailto:shop@pnj.com.vn" title="Email" alt="Email">
-                <i>
-                    <img class="img-lazyload" data-src="" alt="Email" src="https://cdn.pnj.io/images/image-update/footer/email.svg" style="opacity: 1;height:50px; width:25px;">
-                </i>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-linkedin"></i>
             </a>
         </div>
+        <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3"></i>Công Ty Vàng Bạc Đá Quý
+                    </h6>
+                    <p>
+                        Giấy chứng nhận đăng ký doanh nghiệp: 01234567890 do Sở Kế hoạch & Đầu tư TP.HCM cấp lần đầu ngày 02/01/5321. Ngành, nghề kinh doanh
+                    </p>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Sản Phẩm
+                    </h6>
+                    <p>
+                        <a href="@Url.Action("LocNhan", "Ring")" class="text-reset">Nhẫn</a>
+                    </p>
+                    <p>
+                        <a href="@Url.Action("LocBongTai", "Ring")" class="text-reset">Bông Tai</a>
+                    </p>
+                    <p>
+                        <a href="@Url.Action("LocDayCo", "Ring")" class="text-reset">Dây Cổ</a>
+                    </p>
+                    <p>
+                        <a href="@Url.Action("LocVong", "Ring")" class="text-reset">Vòng</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Liên Kết Hữu Ích
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">Cài đặt</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Đặt Hàng</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Gúp đỡ</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Liên Hệ</h6>
+                    <p><i class="fas fa-home me-3"></i>Thành Phố Hồ Chí Minh</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        PNJ@gmail.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> Sđt Mua Bán: 01 234 567 88</p>
+                    <p><i class="fas fa-print me-3"></i> SĐT Tư Vấn 09 8765 4321</p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2023 PNJ.com:
+        <a class="text-reset fw-bold" href="@Url.Action("Gocnhinnguoidung", "Ring")">PNJ.com</a>
     </div>
-    <h2 class="ty-footer-general__header title-zalo-api">
-        <span>Quan tâm Zalo OA PNJ</span>
-    </h2>
-    <p class="text-zalo-api">Nhận các thông tin khuyến mãi hấp dẫn</p>
-    <div class="zalo-follow-only-button" data-oaid="4082136522598975631" bis_skin_checked="1"></div>
-    <a href="https://zalo.me/trangsucpnjofficial" target="_blank">
-        <img class="img-lazyload has-shadow" src="https://cdn.pnj.io/images/2023/zalo.png" data-src="" alt="QUAN TÂM ZALO OA PNJ" style="opacity: 1; width: auto; height: auto;">
-    </a>
-</div>
-
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->

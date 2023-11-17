@@ -16,7 +16,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="https://cdn.pnj.io/images/promo/192/pnjfast-1972x640CTA.jpg" class="d-block w-100" alt="@Url.Action("LocQuaTang", "Ring")">
-               
+
             </div>
             <div class="carousel-item">
                 <img src="https://cdn.pnj.io/images/promo/192/T11_-_CT_BLACK_FRIDAY-1972x640CTA.jpg" class="d-block w-100" alt="Nhẫn">
@@ -35,6 +35,15 @@
         </button>
     </div>
     <!--Slide-->
+    <div class="sort-container">
+        <a href="@Url.Action("SortByPriceAsc")" class="sort-link">
+            Sắp xếp giá tăng dần <i class="fa-solid fa-arrow-up"></i>
+        </a>
+        <a href="@Url.Action("SortByPriceDesc")" class="sort-link">
+            Sắp xếp giá giảm dần <i class="fa-solid fa-arrow-up"></i>
+        </a>
+    </div>
+
     <section>
         <div class="p-3">
             <div class="row w-100">
@@ -184,4 +193,23 @@
         margin-right: 10px; /* Khoảng cách giữa chữ "Trang" và phân trang */
         font-weight: bold; /* Đậm chữ */
     }
+    .sort-link {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+}
+
+.sort-link:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+    sort-container {
+        float: left;
+    }
+
 </style>

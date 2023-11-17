@@ -228,6 +228,19 @@ namespace Demo.Controllers
             var danhSachLoc = db.Rings.Include(r => r.Category).Where(r => r.JewelryType == "7").ToList();
             return View("Gocnhinnguoidung", danhSachLoc);
         }
+        // Sắp xếp sản phẩm theo thứ tự tăng dần theo giá
+        public ActionResult SortByPriceAsc()
+        {
+            var rings = db.Rings.OrderBy(r => r.Price).ToList();
+            return View("Gocnhinnguoidung", rings);
+        }
+
+        // Sắp xếp sản phẩm theo thứ tự giảm dần theo giá
+        public ActionResult SortByPriceDesc()
+        {
+            var rings = db.Rings.OrderByDescending(r => r.Price).ToList();
+            return View("Gocnhinnguoidung", rings);
+        }
         //Tìm kiếm theo keyword
         public ActionResult TimKiem(string keyword)
         {
