@@ -1,14 +1,15 @@
 ﻿@model Demo.Models.Ring
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+    ViewBag.Title = "Chi Tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <style>
     body {
         background-color: #f8f9fa;
     }
 
-    .container {
+    .containerr {
         max-width: 600px;
         margin: 0 auto;
         padding: 20px;
@@ -19,23 +20,37 @@
         margin-top: 20px;
     }
 
-    .back-link {
-        margin-top: 20px;
-        text-align: center;
+    .dl-horizontal {
+        display: flex;
+        flex-wrap: wrap;
     }
+
+        .dl-horizontal dt {
+            width: 30%;
+            margin-right: 5%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-weight: bold;
+        }
+
+        .dl-horizontal dd {
+            width: 65%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-bottom: 10px;
+        }
 
     .action-links {
-        text-align: center;
         margin-top: 20px;
     }
-
-        .action-links a {
-            margin-right: 20px;
-        }
 </style>
-<meta charshet="utf-8" />
-<div class="container">
+
+<meta charset="utf-8" />
+<div class="containerr">
     <h2>Chi Tiết</h2>
+
     <div>
         <h4>Thông Tin Sản Phẩm</h4>
         <hr />
@@ -115,12 +130,6 @@
     </div>
 
     <div class="action-links">
-        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.RingID }, new { @class = "btn btn-primary" }) |
         @Html.ActionLink("Quay Lại Danh Sách", "Gocnhinnguoidung", null, new { @class = "btn btn-secondary" })
     </div>
 </div>
-
-
-
-
-

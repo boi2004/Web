@@ -350,10 +350,8 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Delete.cshtml" />
     <Content Include="Views\Ring\Gocnhinnguoidung.cshtml" />
-    <Content Include="Views\Ring\LocGiaTien.cshtml" />
-    <Content Include="Views\Ring\LocGioiTinh.cshtml" />
-    <Content Include="Views\Ring\LocTheoLoai.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Ring\Details1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

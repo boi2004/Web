@@ -166,6 +166,22 @@ namespace Demo.Controllers
 
         //    return View(pagedRings);
         //}
+        public ActionResult Details1(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Ring ring = db.Rings.Find(id);
+
+            if (ring == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(ring);
+        }
 
 
         // Giải phóng tài nguyên khi Controller hoàn thành

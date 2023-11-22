@@ -108,7 +108,7 @@ namespace NIKE.Controllers
             }
             catch
             {
-                return Content("Error checkout. Please check customer information... Thanks.");
+                return RedirectToAction("CheckOut_Success", "ShoppingCart"); //Bồi vào lỗi
             }
         }
 
